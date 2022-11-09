@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4-cli
 RUN sed -i "s/archive.ubuntu./mirrors.aliyun./g" /etc/apt/sources.list
 RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list
 RUN sed -i "s/security.debian.org/mirrors.aliyun.com\/debian-security/g" /etc/apt/sources.list
@@ -7,7 +7,7 @@ RUN apt-get update
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions
 RUN install-php-extensions gd xdebug
-RUN install-php-extensions amqp apcu apcu_bc ast
+RUN install-php-extensions amqp ast
 RUN install-php-extensions bcmath blackfire bz2 
 RUN install-php-extensions calendar cmark csv
 RUN install-php-extensions dba ddtrace decimal ds
@@ -15,7 +15,8 @@ RUN install-php-extensions enchant ev event excimer exif ffi
 RUN install-php-extensions gd geospatial gettext gmp gnupg grpc
 RUN install-php-extensions http-3.3.0 igbinary imagick imap inotify intl json_post ldap luasandbox lz4 lzf
 RUN install-php-extensions mailparse maxminddb mcrypt memcache memcached memprof mongodb msgpack mysqli oauth oci8 odbc openswoole
-RUN install-php-extensions parle pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pdo_sqlsrv pgsql php_trie protobuf pspell
+RUN install-php-extensions parle pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci 
+RUN install-php-extensions pdo_odbc pdo_pgsql pdo_sqlsrv pgsql php_trie protobuf pspell
 RUN install-php-extensions raphf rdkafka redis seaslog shmop smbclient snappy snmp soap sockets spx sqlsrv ssh2 
 RUN install-php-extensions sysvmsg sysvsem sysvshm
 RUN install-php-extensions tidy timezonedb uploadprogress uuid vips xdebug xdiff xhprof xlswriter xmldiff xmlrpc xsl yaml yar zephir_parser 
