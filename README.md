@@ -23,3 +23,7 @@ docker build -t phpfpm8 -f phpfpm8 .
 ```
 docker build -t phpcli8 -f phpcli8 .
 ```
+### 7. java19
+```
+docker build -t java19 -f java19 .
+```
